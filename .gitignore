@@ -1,5 +1,6 @@
 # Visual Studio cache
 .vs/
+.vscode/
 
-# Build outputs
+# Visual Studio Build outputs
 x64/

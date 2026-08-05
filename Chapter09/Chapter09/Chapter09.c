@@ -5,53 +5,90 @@
 
 void main(void)
 {
+	//. p.335
+	char* psz_data = "1234";
+	char sz_buffer[16] = { 0 };
+
+	printf("Input password: ");
+
+	gets(sz_buffer);
+
+	if (memcmp(psz_data, sz_buffer, 4) == 0) {
+		puts("Success!");
+	}
+	else {
+		puts("Failure!");
+	}
+		
+	// memcmp()의 첫번째 인작값이 크면 양수(+1), 두번째 인자 값이 크면 음수(-1), 같으면 0
+	printf("%d\n", memcmp(psz_data, sz_buffer, 4));
+
+
+
+
+	//. p.333
+/*	char* psz_data = "TEST STRING~";
+	int n_data = 0;
+
+	memcpy(&n_data, psz_data, 3);
+
+	printf("%s", (char*)&n_data)*/;
+	/* n_data는 int형으로 4바이트 크기. 4바이트를 복사하면 메모리가['T', 'E', 'S', 'T']로 꽉 차게 됨.
+	처음에 int n_data = 0; 으로 만들어두었던 0x00(널 문자)이 'T'로 덮어씌워져 사라짐.
+	%s 포맷은 메모리를 순서대로 읽으면서 널 문자(0x00)를 만나야만 출력을 멈춤.
+	n_data의 4바이트(TEST)를 모두 출력한 후에도 출력을 멈추지 않고,
+	n_data 변수 공간을 넘어선 그다음 메모리 주소에 있는 값들까지 문자로 해석해서 화면에 출력.
+	그러다 우연히 0x00을 만나면 그제서야 출력을 멈춤. */
+
+
 	//. +a 글자 크기 늘어날 수록 재할당
-	char* psz_data = NULL;
-	int capacity = 2; // 처음에 임의로 잡은 방의 크기 (2칸)
-	int length = 0;    // 실제 입력된 글자 수
-	char ch;
+	//char* psz_data = NULL;
+	//int capacity = 1; // 처음에 임의로 잡은 방의 크기 (1칸)
+	//int length = 0;    // 실제 입력된 글자 수
+	//char ch;
 
-	// 1. 우선 처음에는 10칸만 먼저 빌려 공간을 만들어둠
-	psz_data = (char*)malloc(sizeof(char) * capacity);
-	if (psz_data == NULL) {
-		printf("메모리 할당 실패!\n");
-		return 1;
-	}
+	//// 1. 우선 처음에는 1칸만 먼저 빌려 공간을 만들어둠
+	//psz_data = (char*)malloc(sizeof(char) * capacity);
 
-	printf("문자열을 입력하세요 (엔터를 치면 입력이 끝납니다):\n");
+	//if (psz_data == NULL) {
+	//	printf("메모리 할당 실패!\n");
+	//	return 1;
+	//}
 
-	// 2. 한 글자씩(getchar) 실시간으로 읽어오기
-	while ((ch = getchar()) != '\n' && ch != EOF) {
+	//printf("문자열을 입력하세요 (엔터를 치면 입력이 끝납니다):\n");
 
-		// 3. 만약 입력받은 글자 수가 방 크기(capacity)보다 커지려고 하면?
-		if (length >= capacity - 1) {
-			capacity *= 2; // 방 크기를 2배로 늘리겠다고 계획함 (10 -> 20 -> 40...)
+	//// 2. 한 글자씩(getchar) 실시간으로 읽어오기
+	//while ((ch = getchar()) != '\n' && ch != EOF) {
 
-			// realloc으로 기존 메모리 데이터는 그대로 유지하면서 크기만 확장!
-			char* p_temp = (char*)realloc(psz_data, sizeof(char) * capacity);
+	//	// 3. 만약 입력받은 글자 수가 방 크기(capacity)보다 커지려고 하면?
+	//	if (length >= capacity - 1) {
+	//		capacity *= 2; // 방 크기를 2배로 늘리겠다고 계획함 (10 -> 20 -> 40...)
 
-			if (p_temp == NULL) {
-				printf("메모리 재할당 실패!\n");
-				free(psz_data); // 실패했더라도 기존 메모리는 지워줘야 해
-				return 1;
-			}
-			psz_data = p_temp; // 안전하게 늘어난 새 주소로 업데이트
-		}
+	//		// realloc으로 기존 메모리 데이터는 그대로 유지하면서 크기만 확장!
+	//		char* p_temp = (char*)realloc(psz_data, sizeof(char) * capacity);
 
-		psz_data[length++] = ch; // 늘어난 공간에 글자를 차곡차곡 넣음
-	}
+	//		if (p_temp == NULL) {
+	//			printf("메모리 재할당 실패!\n");
+	//			free(psz_data); // 실패했더라도 기존 메모리는 지워줘야 해
+	//			return 1;
+	//		}
+	//		psz_data = p_temp; // 안전하게 늘어난 새 주소로 업데이트
+	//	}
 
-	// 4. C언어 문자열의 끝을 알리는 '마침표' 역할의 널 문자(\0)를 꼭 넣어줘야 해
-	psz_data[length] = '\0';
+	//	psz_data[length++] = ch; // 늘어난 공간에 글자를 차곡차곡 넣음
+	//}
 
-	// 5. 결과 출력
-	printf("\n[입력된 문자열 출력]\n");
-	puts(psz_data);
+	//// 4. C언어 문자열의 끝을 알리는 '마침표' 역할의 널 문자(\0)를 꼭 넣어줘야 해
+	//psz_data[length] = '\0';
 
-	// 6. 다 썼으면 빌렸던 메모리 반납!
-	free(psz_data);
+	//// 5. 결과 출력
+	//printf("\n[입력된 문자열 출력]\n");
+	//puts(psz_data);
 
-	return 0;
+	//// 6. 다 썼으면 빌렸던 메모리 반납!
+	//free(psz_data);
+
+	//return 0;
 
 
 	//. p.320
