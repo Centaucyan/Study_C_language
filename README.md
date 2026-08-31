@@ -1,4 +1,6 @@
 # Study_C
+* Update: 2026.08.31
+
 ## 1. Description
 * C 언어 Self-study
 * Book: 최호성의 C 프로그래밍
