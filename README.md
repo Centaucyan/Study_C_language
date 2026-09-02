@@ -51,7 +51,9 @@
 * *(pointer)
 * Pointer offset
 * malloc(메모리 크기): stdlib.h에 정의
-* memset(시작 메모리, 값, 메모리 크기): stling.h에 정의
+* memset(시작 메모리, 초기화 할 값, 초기화 할 만큼의 byte): stling.h에 정의
+* memcpy(to 메모리 주소, from 메모리 주소, 복사할 만큼의 byte)
+* memcmp(원본 메모리 주소, 비교할 메모리 주소, 비교할 만큼의 byte): 두 메모리의 값이 같으면 0을 반환
 * char* psz_list[3] = { "Test", "String", "Data" }; printf("%c\n", **psz_list); // T
     * psz_list[3]으로 선언이 1중 포인터로 선언과 같은 의미.
     * 따라서 printf로 **psz_list로 출력 시 psz_list[0]의 주소값 한 글자만 출력됨.
