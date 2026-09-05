@@ -1,10 +1,11 @@
 # Study_C
-* Update: 2026.08.31
+* Update: 2026.0905.
+---
 
 ## 1. Description
+* **Book:** 최호성의 C 프로그래밍
+* **IDE:** Visual Studio 2022
 * C 언어 Self-study
-* Book: 최호성의 C 프로그래밍
-* Tool: Visual Studio 2022
 ---
 
 ## 2. Study Content
