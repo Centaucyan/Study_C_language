@@ -5,23 +5,41 @@
 
 void main(void)
 {
-	//. p.335
-	char* psz_data = "1234";
-	char sz_buffer[16] = { 0 };
+	//. p.337 Practice 01
+	char name_1st[16] = { 0 }, name_2nd[16] = { 0 };
 
-	printf("Input password: ");
+	printf("첫번째 한글 이름 입력: \n");
+	gets(name_1st);
+	printf("두번째 한글 이름 입력: \n");
+	gets(name_2nd);
 
-	gets(sz_buffer);
-
-	if (memcmp(psz_data, sz_buffer, 4) == 0) {
-		puts("Success!");
+	if (memcmp(name_1st, name_2nd, 2) == 0) {
+		printf("성이 같음");
 	}
 	else {
-		puts("Failure!");
+		printf("성이 다름");
 	}
-		
-	// memcmp()의 첫번째 인작값이 크면 양수(+1), 두번째 인자 값이 크면 음수(-1), 같으면 0
-	printf("%d\n", memcmp(psz_data, sz_buffer, 4));
+
+
+
+
+	//. p.335
+	//char* psz_data = "1234";
+	//char sz_buffer[16] = { 0 };
+
+	//printf("Input password: ");
+
+	//gets(sz_buffer);
+
+	//if (memcmp(psz_data, sz_buffer, 4) == 0) {
+	//	puts("Success!");
+	//}
+	//else {
+	//	puts("Failure!");
+	//}
+	//	
+	//// memcmp()의 첫번째 인작값이 크면 양수(+1), 두번째 인자 값이 크면 음수(-1), 같으면 0
+	//printf("%d\n", memcmp(psz_data, sz_buffer, 4));
 
 
 
@@ -39,6 +57,8 @@ void main(void)
 	n_data의 4바이트(TEST)를 모두 출력한 후에도 출력을 멈추지 않고,
 	n_data 변수 공간을 넘어선 그다음 메모리 주소에 있는 값들까지 문자로 해석해서 화면에 출력.
 	그러다 우연히 0x00을 만나면 그제서야 출력을 멈춤. */
+
+
 
 
 	//. +a 글자 크기 늘어날 수록 재할당
@@ -91,6 +111,8 @@ void main(void)
 	//return 0;
 
 
+
+
 	//. p.320
 	//char* psz_data = NULL;
 	//int n_input = 0;
@@ -105,6 +127,8 @@ void main(void)
 	//puts(psz_data);
 
 	//free(psz_data);
+
+
 
 
 	//. p.311
@@ -127,6 +151,8 @@ void main(void)
 	////printf("%s\n\n", *(char*)psz_string + 1);  //. 바로 전 줄의 주석 처리 내용에 의해 *를 붙이면 char 사이즈 1만큼 옵셋 된 주소에 있는 값을 %s에 의해 다시 주소로 본다. 정상 작동 안하게 됨.
 
 
+
+
 	//. p.310
 	//char* psz_data = "1234 67890!";
 
@@ -141,6 +167,8 @@ void main(void)
 
 	//printf("%c\n", (*psz_data) + 3);
 	//printf("%c\n", *psz_data + 3); //. +연산보다 *(간접지정) 연산이 우선순위가 더 높기 때문에 괄호는 효과 없지만, 가독성을 위해 하는 편이 좋음.
+
+
 
 
 	//. p.306
@@ -160,12 +188,15 @@ void main(void)
 
 
 
+
 	//. +a
 	//char* psz_data = "Test...!!!";
 
 	////printf("s: %s", *psz_data);
 	//printf("c: %c\n", *psz_data);
 	//printf("c: %c\n\n", *(psz_data+2));
+
+
 
 
 	//. p.298
@@ -181,12 +212,17 @@ void main(void)
 
 	//free(pn_data);  //. malloc()로 동적으로 받은 메모리 반환
 
+
+
+
 	//. p.295
 	//char szName[16] = { 0 };
 	//char* pszName = szName;
 
 	//sprintf_s(pszName, sizeof(szName), "%s", "Centaucyan");
 	//puts(szName);
+
+
 
 
 	//. p.294
@@ -200,6 +236,9 @@ void main(void)
 	//printf("%zu\n", sizeof(*(psz_data + 1)));
 	//printf("\n");
 	//printf("%c\n", (*psz_data + 1));  //. *psz_data는 'T'이며 이것의 아스키코드 값은 84. 여기에 1을 더해 85인 아스키코드 값은 'U'이다.
+
+
+
 
 	//. p.285
 	//int n_data = 10;
